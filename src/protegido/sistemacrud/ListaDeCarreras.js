@@ -8,8 +8,6 @@ const ListaDeCarreras = () => {
       <p>Computacion</p>
       <p>Enfermeria</p>
       <p>Mecanica</p>
-      <p>Quimica</p>
-      <p>Hoteleria</p>
     </div>
   )
 }
