@@ -1,12 +1,16 @@
 import React from 'react'
 import { Routes, Route, Link, Outlet, Switch, Redirect} from 'react-router-dom';
-
+    
 import { useAuth } from './AuthContext';
 import { getAuth, signOut } from 'firebase/auth';
-//import "./BarraNavegacion.css";
+import "./BarraNavegacion.css";
 import { useNavigate } from 'react-router-dom';
 
 import Home from '../public/Home';
+import Dashboard from '../public/Dashboard';
+import Informacion from '../public/Informacion';
+import Noticias from '../public/Noticias';
+import LoginForm from '../login/LoginForm';
 
 const BarraRutasPublic = () => {
     const { user } = useAuth();
@@ -31,13 +35,22 @@ const BarraRutasPublic = () => {
           
           <div id="menu">
             <ul>
-              <li><Link to="/home">Home</Link> </li>
+              <li><Link to="/">Portada(Dashboard)</Link> </li>
+              <li><Link to="/home">Inicio(Home)</Link> </li>
+              <li><Link to="/Informacion">INFORMACION</Link> </li>
+              <li><Link to="/Noticias">NOTICIAS</Link> </li>
+              
+
             </ul>
           </div>
         </nav>
   
         <Routes>
-          <Route path="/home" element={<Home />} />
+        <Route path="/iniciarsesion" element={<LoginForm />} />
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/Informacion" element={<Informacion />} />
+        <Route path="/Noticias" element={<Noticias />} />
         </Routes> 
       </div>
     )

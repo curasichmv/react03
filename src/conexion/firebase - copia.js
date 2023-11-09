@@ -1,33 +1,31 @@
-// Importa las bibliotecas de Firebase
+// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
-// Define una variable para almacenar el código de configuración de Firebase
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDtSvGppZzvf-0zHmBtDwDpewu4xyS9l1Y",
-  authDomain: "alexacsara-b3e12.firebaseapp.com",
-  projectId: "alexacsara-b3e12",
-  storageBucket: "alexacsara-b3e12.appspot.com",
-  messagingSenderId: "524156827691",
-  appId: "1:524156827691:web:fa0fc16f5eb20cc662126e"
+  apiKey: "#######################################",
+  authDomain: "#############################",
+  databaseURL: "###########################################",
+  projectId: "#########",
+  storageBucket: "################",
+  messagingSenderId: "###########",
+  appId: "######################################",
+  measurementId: "############"
 };
 
-// Inicializa Firebase
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
-// Define un método de callback para manejar los errores
-const onError = (error) => {
-  console.log("Error al inicializar Firebase:", error);
-};
-
-// Inicializa Firebase con un método de callback
-initializeApp(firebaseConfig, onError);
-
-// Obtén los servicios de Firebase
 const analytics = getAnalytics(app);
-const auth = getAuth(app);
-const firestore = getFirestore(app);
-const storage = getStorage(app);
+
+export const auth    = getAuth(app);
+export const db      = getFirestore(app);
+export const storage = getStorage(app);
