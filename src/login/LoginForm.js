@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
-import { useAuth } from '../ruteo/AuthContext'; // (7). Importando contexto
+import { useAuth } from '../ruteo/AuthContext'; // (6). Importando contexto
 import { useNavigate } from 'react-router-dom';
 
 function LoginForm() {
   
-  const { signIn } = useAuth();                 // (7). Usando el contexto
-
+  // (7). Usando el contexto
+  const { signIn } = useAuth();               
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
-  
   const navigate = useNavigate();
-
 
   const handleSignIn = async (e) => {
     e.preventDefault();
@@ -51,24 +49,3 @@ function LoginForm() {
 }
 
 export default LoginForm;
-
-
-/*
-const handleSignIn = async (e) => {
-    e.preventDefault();
-
-    if (!email || !password) {
-      setError('Por favor, completa ambos campos.');
-      return;
-    }
-
-    try {
-      await signIn(email, password);
-      // Inicio de sesión exitoso: limpiar el error
-      setError(null);
-      navigate('/sistema-crud'); // Redirigir a ruta /sistema-crud
-    } catch (error) {
-      setError('Error al iniciar sesión: ' + error.message);
-    }
-  }
-*/

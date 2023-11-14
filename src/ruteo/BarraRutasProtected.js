@@ -1,5 +1,5 @@
 import { Routes, Route, Outlet, Switch, Redirect} from 'react-router-dom';
-   
+
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from './AuthContext';
@@ -9,23 +9,19 @@ import { useNavigate } from 'react-router-dom';
 
 ///////////////// PROTEGIDA - SistemaCRUD //////////////
 import SistemaCRUD from '../protegido/SistemaCRUD';
-import ListaDeAlumnos from '../protegido/sistemacrud/ListaDeAlumnos';
+import applista from '../protegido/sistemacrud/AppLista';
 
-///////////////// PROTEGIDA - SistemaFILE //////////////
+///////////////// PROTEGIDA - SistemaFILE ////////////////
 import SistemaFILE from '../protegido/SistemaFILE';
 import Fotos from '../protegido/sistemafile/Fotos';
-
 
 //////////////////////// PAG. PUBLICOS /////////////////
 import RegisterForm from '../login/RegisterForm';
 import LoginForm from '../login/LoginForm';
 import AppLista from '../protegido/sistemacrud/AppLista';
-import ListaDeProfesores from '../protegido/sistemacrud/ListaDeProfesores';
-import Documentos from '../protegido/sistemafile/Documentos';
-import ListaDeDeportes from '../protegido/sistemacrud/ListaDeDeportes';
+import Listadeprofesores from '../protegido/sistemacrud/ListaDeProfesores';
 import ListaDeCarreras from '../protegido/sistemacrud/ListaDeCarreras';
-import Pdf from '../protegido/sistemafile/Pdf';
-import Videos from '../protegido/sistemafile/Videos';
+import ListaDeCursos from '../protegido/sistemacrud/ListaDeCursos';
 
 const BarraRutasProtected = () => {
     const { user } = useAuth();
@@ -59,15 +55,14 @@ const BarraRutasProtected = () => {
               
           <div id="menu">
             <ul>
-              <li><Link to="/sistema-crud/applista">Alumnos(App-Lista)</Link> </li>
-              <li><Link to="/sistema-crud/prof">Profesores</Link> </li>
-              <li><Link to="/sistema-crud/depor">Deportes</Link> </li>
-              <li><Link to="/sistema-crud/carre">Carreras</Link> </li>
-
-              <li><Link to="/sistema-file/fotos">Galeria de Fotos</Link> </li>
-              <li><Link to="/sistema-file/docword">Doc.Pdf</Link> </li>
-              <li><Link to="/sistema-file/videos">Videos</Link> </li>
-              <li><Link to="/sistema-file/docword">Doc. word</Link> </li>
+              <li><Link to="/sistema-crud/listadecarreras">Carreras</Link> </li>
+              <li><Link to="/sistema-crud/listadecursos">Deportes</Link> </li>
+              <li><Link to="/sistema-crud/listadeprofesores">Egresados</Link> </li>
+              <li><Link to="/sistema-crud/applista">Alumnos(AppLista)</Link> </li>
+              <li><Link to="/sistema-crud/applista">Videos</Link> </li>
+              <li><Link to="/sistema-file/fotos">Fotos</Link> </li>
+              <li><Link to="/sistema-crud/applista">PDF</Link> </li>
+              <li><Link to="/sistema-crud/applista">Word</Link> </li>
               
             </ul>
           </div>
@@ -81,20 +76,17 @@ const BarraRutasProtected = () => {
           
           <Route path="/sistema-crud" element={<MarcoParaSistemaCRUD />}>
             <Route index element={<SistemaCRUD />} />
-            <Route path="applista" element={<AppLista />} />
-            <Route path="prof" element={<ListaDeProfesores />} />
-            <Route path="depor" element={<ListaDeDeportes />} />
-            <Route path="carre" element={<ListaDeCarreras />} />
-            
+            <Route path="applista" element={<AppLista/>} />
+            <Route path="listadeprofesores" element={<Listadeprofesores />}/>
+            <Route path="listadecarreras" element={<ListaDeCarreras />}/>
+            <Route path="listadecursos" element={<ListaDeCursos />}/>
           </Route>
   
   
           <Route path="/sistema-file" element={<MarcoParaSistemaFILE />}>
             <Route index element={<SistemaFILE />} />
             <Route path="fotos" element={<Fotos />} />
-            <Route path="docword" element={<Documentos />} />
-            <Route path="Pdf" element={<Pdf />} />
-            <Route path="Videos" element={<Videos />} />
+            
           </Route>
   
         </Routes>        
@@ -159,3 +151,4 @@ function MarcoParaSistemaFILE() {
       }
     }
   */
+  
